@@ -19,11 +19,21 @@ This project implements a solution for retrieving microservices' logs with optio
 Clone the project in your local coputer:
 
 ```
-git clone <repository-url>
+git clone https://github.com/HosseinKeramati/BugloosCodingChallenge.git
 ```
 
 ### Step 2:
-Copy `.env.example` to `.env` file and fill the `DB_DATABASE, DB_USERNAME, DB_PASSWORD` fields.
+Go to project directory:
+
+```
+cd BugloosCodingChallenge/
+```
+
+Copy `.env.example` to `.env` file and fill the `DB_DATABASE, DB_USERNAME, DB_PASSWORD` fields and genereate `APP_KEY`:
+
+```
+php artisan key:generate
+```
 
 ### Step 3:
 
@@ -59,3 +69,11 @@ php artisan serve
 Now the project is live at (http://localhost:8000) and you can see [documentation](http://localhost:8000/api/documentation#/logs) for available end points.
 
 -------
+
+# Available tests
+
+You can run tests with command below
+
+```
+php artisan test
+```

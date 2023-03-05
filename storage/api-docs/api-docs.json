@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Bugloos project - Hossein Keramati Tavallaei",
+        "title": "Bugloos Code Challenge - Hossein Keramati Tavallaei",
         "version": "1.0.0"
     },
     "paths": {
