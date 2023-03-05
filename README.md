@@ -75,15 +75,16 @@ You can see [**documentation**](http://localhost:8000/api/documentation#/logs) f
 
 -------
 
-# Available tests
+# Available Tests
 
 You can run tests with command below
 
 ```
 php artisan test
 ```
+With spending more time we can write some test to check filter value validation like `statusCode` data type and date format.
 
-# Solution
+# Solution Explanation 
 
 ##### Table of Contents
 

@@ -23,14 +23,17 @@ class LogsCountApiTest extends TestCase
         $query = http_build_query([
             'serviceNames' => 'order-service,invoice-service',
             'statusCode' => '201',
-            'startDate' => '2022/09/17',
-            'endDate' => '2022/09/17',
+            'startDate' => '2022-09-17',
+            'endDate' => '2022-09-17',
         ]);
 
         $response = $this->get("/api/logs/count?$query");
 
         $response->assertJsonStructure([
-            'count'
+            'status',
+            'res' => [
+                'count',
+            ]
         ]);
         
         $response->assertStatus(200);
@@ -42,15 +45,18 @@ class LogsCountApiTest extends TestCase
         $query = http_build_query([
             'serviceName' => 'order-service,invoice-service',
             'statusCode' => '201',
-            'startDatee' => '2022/09/17',
-            'endDate' => '2022/09/17',
+            'startDatee' => '2022-09-17',
+            'endDate' => '2022-09-17',
         ]);
 
         $response = $this->get("/api/logs/count?$query");
 
         $response->assertJsonStructure([
-            'errorMessage',
-            'validInputs'
+            'status',
+            'res' => [
+                'errorMessage',
+                'validInputs',
+            ]
         ]);
 
         $response->assertStatus(400);
