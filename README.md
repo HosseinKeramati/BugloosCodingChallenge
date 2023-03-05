@@ -65,7 +65,13 @@ Serve project
 ```
 php artisan serve
 ```
-Now the project is live at (http://localhost:8000) and you can see [documentation](http://localhost:8000/api/documentation#/logs) for available end points.
+Now the project is live at (http://localhost:8000).
+
+#### End point(s):
+
+[Logs Count API](http://localhost:8000/api/logs/count)
+
+You can see [**documentation**](http://localhost:8000/api/documentation#/logs) for more details.
 
 -------
 
@@ -76,3 +82,32 @@ You can run tests with command below
 ```
 php artisan test
 ```
+
+# Solution
+
+##### Table of Contents
+
+[Seed Database](#seed-database)  
+[Logs Count](#logs-count)  
+
+## Seed Database
+
+There is a command in `app/Console/Commands/SeedDbFromLogFile.php` that:
+
+- Reads the log file from `BugloosCodingChallenge/public` folder
+- Parse data
+- And insert logs into the MySQL database.
+
+## Logs Count
+
+There is a contller method 
+```
+public function count(Request $request){
+
+}
+```
+In `app/Http/Controllers/MicroserviceLogController.php` that:
+
+- Checks filter criteria validation
+- Check filter value Validation (`statusCode` should be integer and valid date format is `YYYY-MM-DD`).
+- Calculates logs count

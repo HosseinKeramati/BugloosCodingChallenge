@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MicroserviceLog;
 use Illuminate\Http\Request;
+use Validator;
 
 class MicroserviceLogController extends Controller
 {
@@ -89,16 +90,36 @@ class MicroserviceLogController extends Controller
 
         if($hasInvaliInput){
             return response()->json([
+                'status' => 'ok',
+                'res' => [
                     'errorMessage' => 'Invalid input',
-                    'validInputs' => 'serviceNames, statusCode, startDate, endDate'
+                    'validInputs' => 'serviceNames, statusCode, startDate, endDate',
+                ],
             ], 400);
         }
+
+        $validator = Validator::make($request->all(), [
+            'statusCode' => 'integer',
+            'startDate' => 'date',
+            'endDate' => 'date_format:Y-m-d',
+        ]);
+
+        if ($validator->fails()) {
+            return response([
+                'status' => 'error',
+                'res' => $validator->messages()->all(),
+            ], 400);
+        }
+
 
         $count = MicroserviceLog::logsCountWithFilters($queryParameters);
 
         return response()->json([
-            'count' => $count,
-        ], 200);
+            "status" => "ok",
+                'res' => [
+                    'count' => $count,
+                ],
+            ], 200);
         
     }
 }
