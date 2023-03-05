@@ -28,19 +28,18 @@ Go to project directory:
 ```
 cd BugloosCodingChallenge/
 ```
+Install dependencies using composer
+
+```
+composer install
+```
+
+### Step 3:
 
 Copy `.env.example` to `.env` file and fill the `DB_DATABASE, DB_USERNAME, DB_PASSWORD` fields and genereate `APP_KEY`:
 
 ```
 php artisan key:generate
-```
-
-### Step 3:
-
-Install dependencies using composer
-
-```
-composer install
 ```
 
 ### Step 4:
