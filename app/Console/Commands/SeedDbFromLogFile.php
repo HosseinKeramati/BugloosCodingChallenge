@@ -52,7 +52,9 @@ class SeedDbFromLogFile extends Command
      */
     public static function newLogFileEntry($logsFile)
     {
-        $logs = explode("\r\n", $logsFile);
+
+        $logs = str_replace("\r", '', $logsFile);
+        $logs = explode("\n", $logsFile);
         return SeedDbFromLogFile::parseLogs($logs);
 
     }
