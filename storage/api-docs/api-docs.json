@@ -53,9 +53,19 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "count": {
+                                        "status": {
                                             "format": "string",
-                                            "default": "45"
+                                            "default": "ok"
+                                        },
+                                        "res": {
+                                            "properties": {
+                                                "count": {
+                                                    "format": "string",
+                                                    "default": "45"
+                                                }
+                                            },
+                                            "type": "object",
+                                            "format": "object"
                                         }
                                     },
                                     "type": "object"
@@ -69,13 +79,23 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "errorMessage": {
+                                        "status": {
                                             "format": "string",
-                                            "default": "Invalid input"
+                                            "default": "error"
                                         },
-                                        "validInputs": {
-                                            "format": "string",
-                                            "default": "serviceNames, statusCode, startDate, endDate"
+                                        "res": {
+                                            "properties": {
+                                                "errorMessage": {
+                                                    "format": "string",
+                                                    "default": "Invalid input"
+                                                },
+                                                "validInputs": {
+                                                    "format": "string",
+                                                    "default": "serviceNames, statusCode, startDate, endDate"
+                                                }
+                                            },
+                                            "type": "object",
+                                            "format": "object"
                                         }
                                     },
                                     "type": "object"

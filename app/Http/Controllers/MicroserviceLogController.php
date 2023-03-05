@@ -54,9 +54,18 @@ class MicroserviceLogController extends Controller
         *          @OA\JsonContent(
         *              type="object",
         *              @OA\Property(
-        *                  format="string", 
-        *                  default="45",
-        *                  property="count"
+        *                   format="string",
+        *                   default="ok",
+        *                   property="status"
+        *              ),
+        *              @OA\Property(
+        *                  format="object",
+        *                  property="res",
+        *                  @OA\Property(
+        *                      format="string",
+        *                      default="45",
+        *                      property="count"
+        *                  ),
         *              ),
         *          
         *          )
@@ -67,18 +76,27 @@ class MicroserviceLogController extends Controller
         *          @OA\JsonContent(
         *              type="object",
         *              @OA\Property(
-        *                  format="string", 
-        *                  default="Invalid input",
-        *                  property="errorMessage"
+        *                   format="string",
+        *                   default="error",
+        *                   property="status"
         *              ),
         *              @OA\Property(
-        *                  format="string", 
-        *                  default="serviceNames, statusCode, startDate, endDate",
-        *                  property="validInputs"
+        *                  format="object",
+        *                  property="res",
+        *                  @OA\Property(
+        *                      format="string",
+        *                      default="Invalid input",
+        *                      property="errorMessage"
+        *                  ),
+        *                  @OA\Property(
+        *                      format="string",
+        *                      default="serviceNames, statusCode, startDate, endDate",
+        *                      property="validInputs"
+        *                  ),
         *              ),
         *          
         *          )
-        *          ),
+        *      ),
         * )
         */
     public function count(Request $request)
