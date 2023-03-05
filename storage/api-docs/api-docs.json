@@ -1,0 +1,90 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Bugloos project - Hossein Keramati Tavallaei",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/logs/count": {
+            "get": {
+                "tags": [
+                    "logs"
+                ],
+                "summary": "Logs count",
+                "description": "Get different microservices' logs count",
+                "operationId": "getCount",
+                "parameters": [
+                    {
+                        "name": "serviceNames",
+                        "in": "query",
+                        "description": "order-service, invoice-service, etc",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "statusCode",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "description": "YYYY-MM-DD",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "YYYY-MM-DD",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "count": {
+                                            "format": "string",
+                                            "default": "45"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid inputs",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errorMessage": {
+                                            "format": "string",
+                                            "default": "Invalid input"
+                                        },
+                                        "validInputs": {
+                                            "format": "string",
+                                            "default": "serviceNames, statusCode, startDate, endDate"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
